@@ -23,3 +23,4 @@ Marking a Task as Completed
 When a task is marked as completed by checking the checkbox, it appears with a strikethrough, indicating that it’s done.
 ![Completed Task](./images/completed-list.png)
 
+For the app implementation details please check the 'Implementation guide.docx' in repo list.
