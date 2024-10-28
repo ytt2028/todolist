@@ -13,9 +13,12 @@ When a new task is added, it appears below the input field with a checkbox and "
 Editing a Task
 Clicking the "Edit" button allows users to modify the task. The "Edit" button changes to "Save," letting users save their changes.
 ![Editing a Task](./images/edit-list.png)
+
 Deleting a Task
 The Delete button allows users to remove a task from the list. Once clicked, the task will be permanently removed from the list.
 ![Deleting a Task](./images/delete-task.png)
+
 Marking a Task as Completed
 When a task is marked as completed by checking the checkbox, it appears with a strikethrough, indicating that it’s done.
 ![Completed Task](./images/completed-list.png)
+
