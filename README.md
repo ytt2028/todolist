@@ -1,77 +1,81 @@
-Step 1: Set Up Git Repository
-1.	Create a new directory for the project:
-Open a terminal and run:
-mkdir todo-list-app
-cd todo-list-app
-2.	Initialize a new Git repository:
-Inside the todo-list-app directory, initialize Git:
-git init
-3.	Create a .gitignore file:
-This file helps Git ignore specific files or folders. Since you’ll have dependencies saved in node_modules/ (which can get very large), it’s best to exclude them from the repository. This command creates a .gitignore file with node_modules/ listed, so it won’t be tracked by Git.
-echo "node_modules/" > .gitignore
-Step 2: Verify the setup
-•	Once the installation finishes, you should see a bunch of new files in the project directory.
-•	To test if everything is set up correctly, start the development server:
-•	npm start
-•	Run the create-react-app Command
-               npx create-react-app .
-•	Once the setup is complete,  start the server from the terminal by running:
-                        npm start
-•	default browser at http://localhost:3000
-Step3: install dependencies 
-•	for this project use the default dependencies. Later if we like to add new libraries, we can do so with npm install <package-name> 
-Step4: Project Structure
-•	 1.Create a components folder:
-•	Inside the src directory, create a new folder called components. This is where all  React components (individual pieces of the app) will live.
-2. Create Component Files:
-•	Inside src/components/, create the following component files:
-o	TodoItem.js: This component will represent a single to-do item.
-o	TodoList.js: This component will render a list of TodoItem components.
-o	AddTodo.js: This component will contain the form to add new to-do items.
-Step 5: Develop the Application Components
-
-1. App Component (App.js)
-Purpose: This is the main component of the app, holding the to-do data and the logic for managing tasks (adding, editing, deleting, marking as completed).
-Code Breakdown:
-•	useState: This React hook creates the todos state, which stores the list of tasks. setTodos is used to update this list whenever a task is added, edited, deleted, or marked as completed.
-•	Functions:
-o	addTodo function: Adds a new task to the existing todos list and updates the state.
-o	toggleComplete function: Changes the completion status of a task by toggling the completed property.
-o	deleteTodo function: Removes a task from the todos list by filtering it out based on the task’s index.
-o	editTodo function: Updates the text of a specific task in the todos list.
-Components inside:
-•	<AddTodo />: A form component for adding new tasks to the list.
-•	<TodoList />: A component for displaying all tasks in the todos list.
-In Summary: The App component controls the data and functions for adding, editing, deleting, and marking tasks as completed. It passes these as props to child components (AddTodo and TodoList).
- 
-2. AddTodo Component (AddTodo.js)
-Purpose: This component is a form that lets users type a new task and add it to the list.
-Code Breakdown:
-•	useState: Creates a state variable newTodo to store the text of the new task as the user types.
-•	handleSubmit function:
-o	Prevents page refresh: Calls e.preventDefault() to stop the form submission from refreshing the page.
-o	Adds the new task: If newTodo isn’t empty, it uses the addTodo function from App to add the new task.
-o	Clears input: Resets newTodo to an empty string after the task is added, clearing the input box.
-In Summary: The AddTodo component manages user input for new tasks and updates the App component with new tasks while resetting the input form.
- 
-3. TodoList Component (TodoList.js)
-Purpose: This component receives the list of tasks from App and renders each task as a TodoItem component.
-Code Breakdown:
-•	todos.map: Loops through the todos list and creates a TodoItem for each task. Each task gets its own TodoItem component.
-•	key: Each TodoItem receives a unique key (here, index) to help React track changes and improve performance.
-In Summary: TodoList serves as a container for TodoItem components, ensuring each task in the list is displayed as a separate item.
-4. TodoItem Component (TodoItem.js)
-Purpose: This component represents an individual task. It displays the task’s text, a checkbox for marking it as completed, and buttons for editing or deleting the task.
-Code Breakdown:
-•	useState for Editing:
-o	isEditing: Controls whether the task is in edit mode (where the text can be modified) or view mode.
-o	editedText: Holds the updated text while editing.
-•	Functions:
-o	toggleComplete: Toggles the completed status of the task by calling the toggleComplete function passed as a prop from App.
-o	handleEdit: Switches the task into edit mode.
-o	handleSave: Saves the edited text by calling editTodo, exits edit mode, and updates the task text.
-•	Elements:
-o	input type="checkbox": A checkbox representing whether the task is completed, where checked is set to todo.completed.
-o	span and input: Displays the task text as a span when not editing, or an editable input field when in edit mode.
-In Summary: TodoItem manages individual tasks, allowing users to mark them as complete, edit the text, or delete the task entirely.
+Project Brief: To-Do List Application
+Objective
+Create a simple To-Do List application where users can add, edit, delete, and mark
+tasks as completed. This project will help you get hands-on experience with React,
+npm, and basic Git workflows.
+Prerequisites
+ Basic understanding of JavaScript, HTML, and CSS.
+ Node.js and npm installed on your machine.
+ Git installed on your machine.
+Steps
+1. Set Up Git Repository
+o Create a new directory for your project:
+o mkdir todo-list-app
+o cd todo-list-app
+o Initialize a new Git repository:
+o git init
+o Create a .gitignore file to exclude node_modules and other unnecessary
+files:
+o echo "node_modules/" > .gitignore
+2. Create a React Project
+o Use Create React App to set up the project:
+o npx create-react-app .
+o This command will generate a new React project in the current directory.
+3. Install Dependencies
+o Navigate to your project directory and install any additional dependencies
+you might need. For this project, you can start with the default
+dependencies provided by Create React App.
+4. Project Structure
+o Your project structure should look something like this:
+o todo-list-app/
+o +-- node_modules/
+o +-- public/
+o +-- src/
+o ¦ +-- components/
+o ¦ ¦ +-- TodoItem.js
+o ¦ ¦ +-- TodoList.js
+o ¦ ¦ +-- AddTodo.js
+o ¦ +-- App.css
+o ¦ +-- App.js
+o ¦ +-- index.css
+o ¦ +-- index.js
+o +-- .gitignore
+Classifica(on: PROTECTED
+o +-- package.json
+o +-- README.md
+5. Develop the Application
+o App Component: The main component that will render the To-Do List and
+Add Todo components.
+o TodoList Component: A component that will render a list of TodoItem
+components.
+o TodoItem Component: A component that represents a single to-do item.
+o AddTodo Component: A component with a form to add new to-do items.
+6. Basic Styling
+o Use CSS to style your application. You can create a styles.css file or use
+inline styles.
+7. Running the Application
+o Start the development server:
+o npm start
+o This will run your application on http://localhost:3000.
+8. Commit Your Changes
+o Add your changes to the staging area:
+o git add .
+o Commit your changes:
+o git commit -m "Initial commit with basic project setup"
+9. Push to Remote Repository
+o Create a new repository on GitHub (or any other Git hosting service).
+o Add the remote repository to your local Git repository:
+o git remote add origin <your-repo-url>
+o Push your changes to the remote repository:
+o git push -u origin main
+Features to Implement
+ Add Todo: A form to add new to-do items.
+ Display Todos: A list to display all to-do items.
+ Edit Todo: Functionality to edit existing to-do items.
+ Delete Todo: Functionality to delete to-do items.
+ Mark as Completed: Functionality to mark to-do items as completed.
+Additional Tips
+ Use React hooks like useState and useEhect to manage state and side ehects.
+ Break down your application into smaller, reusable components.
+ Keep your code clean and well-documented.
 
