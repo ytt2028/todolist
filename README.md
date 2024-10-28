@@ -16,6 +16,7 @@ Clicking the "Edit" button allows users to modify the task. The "Edit" button ch
 
 Deleting a Task
 The Delete button allows users to remove a task from the list. Once clicked, the task will be permanently removed from the list.
+
 ![Deleting a Task](./images/delete-task.png)
 
 Marking a Task as Completed
