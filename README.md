@@ -29,32 +29,7 @@ o	TodoItem.js: This component will represent a single to-do item.
 o	TodoList.js: This component will render a list of TodoItem components.
 o	AddTodo.js: This component will contain the form to add new to-do items.
 Step 5: Develop the Application Components
-1.App component(App.js)
-Purpose: This is the main component of the app, holding the to-do data and the logic for managing tasks (adding, editing, deleting, marking as completed).
-Code Breakdown:
-•	useState: This React hook creates the todos state, which stores the list of tasks. setTodos is used to update this list whenever a task is added, edited, deleted, or marked as completed.
-•	Functions:
-o	addTodo function: Adds a new task to the existing todos list and updates the state.
-o	toggleComplete function: Changes the completion status of a task by toggling the completed property.
-o	deleteTodo function: Removes a task from the todos list by filtering it out based on the task’s index.
-o	editTodo function: Updates the text of a specific task in the todos list.
-Components inside:
-•	<AddTodo />: A form component for adding new tasks to the list.
-•	<TodoList />: A component for displaying all tasks in the todos list.
-In Summary: The App component controls the data and functions for adding, editing, deleting, and marking tasks as completed. It passes these as props to child components (AddTodo and TodoList).
-2. AddTodo Component (AddTodo.js)
-Purpose: This component is a form that lets users type a new task and add it to the list.
-Code Breakdown:
-•	useState: Creates a state variable newTodo to store the text of the new task as the user types.
-•	handleSubmit function:
-o	Prevents page refresh: Calls e.preventDefault() to stop the form submission from refreshing the page.
-o	Adds the new task: If newTodo isn’t empty, it uses the addTodo function from App to add the new task.
-o	Clears input: Resets newTodo to an empty string after the task is added, clearing the input box.
-In Summary: The AddTodo component manages user input for new tasks and updates the App component with new tasks while resetting the input form.
 
-
-Certainly! I’ll format the code breakdown in a similar style for clarity. Here’s the detailed explanation for each component in the to-do list app:
- 
 1. App Component (App.js)
 Purpose: This is the main component of the app, holding the to-do data and the logic for managing tasks (adding, editing, deleting, marking as completed).
 Code Breakdown:
