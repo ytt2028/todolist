@@ -3,23 +3,29 @@ import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 import './styles.css';
 
-function App() {
-  const [todos, setTodos] = useState([]);
+// Define the type for a Todo item
+type Todo = {
+  text: string;
+  completed: boolean;
+};
 
-  const addTodo = (newTodo) => {
+function App() {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const addTodo = (newTodo: Todo) => {
     setTodos([...todos, newTodo]);
   };
-  const toggleComplete = (index) => {
+  const toggleComplete = (index: number) => {
     const updatedTodos = todos.map((todo, i) =>
       i === index ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(updatedTodos);
   };
-  const deleteTodo = (index) => {
+  const deleteTodo = (index:number) => {
     const updatedTodos = todos.filter((_, i) => i !== index);
     setTodos(updatedTodos);
   }; 
-  const editTodo = (index, newText) => {
+  const editTodo = (index: number, newText: string) => {
     const updatedTodos = todos.map((todo, i) =>
       i === index ? { ...todo, text: newText } : todo
     );

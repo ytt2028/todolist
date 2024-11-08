@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+// Type definition for the props used in TodoText
+type TodoTextProps = {
+  completed: boolean;
+};
+
 // Styled component for the container
 const TodoContainer = styled.div`
   display: flex;
@@ -12,12 +17,6 @@ const TodoContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-// Styled component for the text
-const TodoText = styled.span`
-  flex-grow: 1;
-  text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
-  margin-left: 10px;
-`;
 
 // Styled component for the button
 const Button = styled.button`

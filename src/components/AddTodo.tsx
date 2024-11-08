@@ -31,10 +31,20 @@ const Button = styled.button`
   }
 `;
 
-function AddTodo({ addTodo }) {
-  const [newTodo, setNewTodo] = useState('');
+// Define the type for a Todo item
+type Todo = {
+  text: string;
+  completed: boolean;
+};
 
-  const handleSubmit = (e) => {
+// Define the props type for AddTodo component
+type AddTodoProps = {
+  addTodo: (newTodo: Todo) => void;
+};
+
+function AddTodo({ addTodo }: AddTodoProps) {
+  const [newTodo, setNewTodo] = useState('');
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTodo.trim()) return;
     addTodo({ text: newTodo, completed: false });
