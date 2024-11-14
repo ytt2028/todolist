@@ -52,7 +52,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ addTodo  }) => {
     return; 
   }
     if (newTodo.length > 10) {
-      setError('Todo name cannot be more than 10 characters');
+      setError('Please enter a name Maximum 10 characters');
       return;
     }
     addTodo({text: newTodo, completed: true }); 
