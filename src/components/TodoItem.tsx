@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+ import DeleteIcon from '@mui/icons-material/Delete';
+ import EditIcon from '@mui/icons-material/Edit';
 
 // Type definition for the props used in TodoText
 type TodoTextProps = {
@@ -32,15 +34,28 @@ const Button = styled.button`
     background-color: #0056b3;
   }
 `;
+// Define a styled component for the todo text
+const TodoText = styled.span<{ completed: boolean }>`
+  flex-grow: 1;
+  text-decoration: ${(props) => (props.completed ? 'line-through' : 'none')};
+`;
+
+type TodoItemProps = {
+  todo: { id: number; text: string; completed: boolean };
+  toggleComplete: () => void;
+  onDelete: () => void;
+  onEdit: () => void;
+};
 
 const Checkbox = styled.input`
-  margin-right: 10px;
+  margin-right: 10px; width:100px;
 `;
 
 function TodoItem({ todo, toggleComplete, deleteTodo, editTodo }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedText, setEditedText] = useState(todo.text);
-  
+
+
     const handleEdit = () => {
       setIsEditing(true);
     };
@@ -51,8 +66,8 @@ function TodoItem({ todo, toggleComplete, deleteTodo, editTodo }) {
     };
   
     return (
-      <div className={`todo-item ${todo.completed ? 'completed' : ''}`}>
-        <input
+      <TodoContainer>
+        <Checkbox
           type="checkbox"
           checked={todo.completed}
           onChange={toggleComplete}
@@ -63,19 +78,23 @@ function TodoItem({ todo, toggleComplete, deleteTodo, editTodo }) {
             value={editedText}
             onChange={(e) => setEditedText(e.target.value)}
             onBlur={handleSave}
+            style={{ marginRight: '10px' }}
           />
         ) : (
-          <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-            {todo.text}
-          </span>
+          <TodoText completed={todo.completed}>{todo.text}</TodoText>
         )}
         {isEditing ? (
-          <button onClick={handleSave}>Save</button>
+          <Button onClick={handleSave} style={{ marginRight: '10px' }}>
+            Save
+          </Button>
         ) : (
-          <button onClick={handleEdit}>Edit</button>
+           <>
+
+<EditIcon onClick={handleEdit} style={{ cursor: 'pointer', marginRight: '10px' }} />
+             <DeleteIcon onClick={deleteTodo} style={{ cursor: 'pointer' }} />
+          </>
         )}
-        <button onClick={deleteTodo}>Delete</button>
-      </div>
+      </TodoContainer>
     );
   }
   

@@ -14,7 +14,7 @@ const Input = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
+  width: 80%;
 `;
 
 // Styled component for the button
@@ -52,15 +52,15 @@ function AddTodo({ addTodo }: AddTodoProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Form onSubmit={handleSubmit}>
+      <Input
         type="text"
         placeholder="Add a new task"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
       />
-      <button type="submit">Add</button>
-    </form>
+      <Button type="submit">Add</Button>
+    </Form>
   );
 }
 
