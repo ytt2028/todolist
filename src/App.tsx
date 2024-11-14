@@ -33,7 +33,7 @@ function App() {
   };     
   return (
     <div className="App">
-      <h1>To-Do List</h1>
+      <h1>Todo App</h1>
       <AddTodo addTodo={addTodo} />
       <TodoList todos={todos} 
        toggleComplete={toggleComplete} 
