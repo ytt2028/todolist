@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
- import DeleteIcon from '@mui/icons-material/Delete';
- import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 // Type definition for the props used in TodoText
 type TodoTextProps = {
@@ -53,7 +53,7 @@ type TodoItemProps = {
 };
 
 const Checkbox = styled.input`
-  margin-right: 10px; width:100px;
+  margin-right: 10px; width:20px;
 `;
 
 function TodoItem({ todo, toggleComplete, deleteTodo, editTodo }) {

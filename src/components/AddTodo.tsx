@@ -6,7 +6,7 @@ const FormContainer = styled.div`
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  width: 100%;
   max-width: 300px;
 `;
 
@@ -24,7 +24,7 @@ const Input = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
+  width: 150%;
 `;
 
 // Styled component for the button

@@ -17,6 +17,7 @@ const ListContainer = styled.div`
 function TodoList({ todos, toggleComplete, deleteTodo, editTodo }) {
   return (
     <div>
+      <b>Tasks</b>
       {todos.map((todo, index) => (
         <TodoItem
           key={index}
