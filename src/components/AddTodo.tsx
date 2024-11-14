@@ -42,26 +42,34 @@ type AddTodoProps = {
   addTodo: (newTodo: Todo) => void;
 };
 
-function AddTodo({ addTodo }: AddTodoProps) {
-  const [newTodo, setNewTodo] = useState('');
-  const handleSubmit = (e: React.FormEvent) => {
+const AddTodo: React.FC<AddTodoProps> = ({ addTodo  }) => {
+  const [newTodo, setNewTodo] = useState(''); 
+  const [error, setError] = useState('');
+  const handleSubmit = (e) => { 
     e.preventDefault();
-    if (!newTodo.trim()) return;
-    addTodo({ text: newTodo, completed: false });
-    setNewTodo('');
+    if (!newTodo) {
+    setError('Todo name is required');
+    return; 
+  }
+    if (newTodo.length > 10) {
+      setError('Todo name cannot be more than 10 characters');
+      return;
+    }
+    addTodo({text: newTodo, completed: true }); 
+    setNewTodo(''); 
+    setError('');
   };
 
-  return (
-    <Form onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        placeholder="Add a new task"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-      />
-      <Button type="submit">Add</Button>
-    </Form>
-  );
-}
+  return ( <Form onSubmit={handleSubmit}>
+  <Input
+          type="text"
+          placeholder="Add a new task"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+  <Button type="submit">Add</Button> 
+  {error && <p style={{ color: 'red' }}>{error}</p>}
+  </Form> );
+  };
 
 export default AddTodo;
