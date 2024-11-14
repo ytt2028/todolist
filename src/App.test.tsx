@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import React from 'react';
 
-test('renders learn react link', () => {
+test('renders Todo App header', () => {
   render(<App />);
-  const linkElement = screen.getByText(/to-do list/i);
-  expect(linkElement).toBeInTheDocument();
+  const headerElement = screen.getByText(/todo app/i); // Update to match "Todo App"
+  expect(headerElement).toBeInTheDocument();
 });
