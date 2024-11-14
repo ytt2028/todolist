@@ -6,7 +6,12 @@ import styled from 'styled-components';
 
 // Styled component for the list container
 const ListContainer = styled.div`
+  padding: 20px;
+  background-color: #e0f7fa;
+  border-radius: 8px;
   width: 100%;
+  max-width: 500px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 function TodoList({ todos, toggleComplete, deleteTodo, editTodo }) {

@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+// Styled container for the form
+const FormContainer = styled.div`
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 300px;
+`;
+
 // Styled component for the form
 const Form = styled.form`
   display: flex;
@@ -14,7 +24,7 @@ const Input = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 80%;
+  width: 100%;
 `;
 
 // Styled component for the button
@@ -22,12 +32,12 @@ const Button = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  background-color: #4caf50;
+  background-color: #00bcd4;
   color: white;
   cursor: pointer;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #0097a7;
   }
 `;
 
@@ -55,7 +65,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ addTodo  }) => {
       setError('Please enter a name Maximum 10 characters');
       return;
     }
-    addTodo({text: newTodo, completed: true }); 
+    addTodo({text: newTodo, completed: false }); 
     setNewTodo(''); 
     setError('');
   };

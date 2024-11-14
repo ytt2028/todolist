@@ -10,14 +10,18 @@ type TodoTextProps = {
 
 // Styled component for the container
 const TodoContainer = styled.div`
- display: flex;
-justify-content: space-between; align-items: center;
-padding: 10px;
-border-bottom: 1px solid #ccc;
-background-color: #f9f9f9; &:hover {
-background-color: #e9e9e9; }
-@media (max-width: 600px) { flex-direction: column;
-align-items: flex-start; }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 
@@ -91,8 +95,8 @@ function TodoItem({ todo, toggleComplete, deleteTodo, editTodo }) {
         ) : (
            <>
 
-<EditIcon onClick={handleEdit} style={{ cursor: 'pointer', marginRight: '10px' }} />
-             <DeleteIcon onClick={deleteTodo} style={{ cursor: 'pointer' }} />
+<EditIcon onClick={handleEdit} style={{ cursor: 'pointer', marginRight: '10px', color: '#007bff'}} />
+             <DeleteIcon onClick={deleteTodo} style={{ cursor: 'pointer', color: 'red' }} />
           </>
         )}
       </TodoContainer>
