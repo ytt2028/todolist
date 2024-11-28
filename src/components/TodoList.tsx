@@ -6,30 +6,43 @@ import styled from 'styled-components';
 
 // Styled component for the list container
 const ListContainer = styled.div`
-  padding: 20px;
-  background-color: #e0f7fa;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between tasks */
 `;
 
-function TodoList({ todos, toggleComplete, deleteTodo, editTodo }) {
+// Styled header for the "Current tasks" section
+const SectionHeader = styled.h2`
+  font-size: 1.5em;
+  color: black;
+  margin-bottom: 15px;
+`;
+
+type TodoListProps = {
+  todos: { id: number; text: string; completed: boolean }[];
+  toggleComplete: (index: number) => void;
+  deleteTodo: (index: number) => void;
+  editTodo: (index: number, newText: string) => void;
+};
+
+const TodoList: React.FC<TodoListProps> = ({ todos, toggleComplete, deleteTodo, editTodo }) => {
   return (
     <div>
-      <b>Tasks</b>
-      {todos.map((todo, index) => (
-        <TodoItem
-          key={index}
-          todo={todo}
-          toggleComplete={() => toggleComplete(index)}
-          deleteTodo={() => deleteTodo(index)}
-          editTodo={(newText) => editTodo(index, newText)} // Pass editTodo to TodoItem
-        />
-      ))}
+      <SectionHeader>Current tasks</SectionHeader>
+      <ListContainer>
+        {todos.map((todo, index) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            toggleComplete={() => toggleComplete(index)}
+            deleteTodo={() => deleteTodo(index)}
+            editTodo={(newText) => editTodo(index, newText)}
+          />
+        ))}
+      </ListContainer>
     </div>
   );
-}
+};
 
 export default TodoList;
 

@@ -1,62 +1,53 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete"; // Material UI Delete icon
+import EditIcon from "@mui/icons-material/Edit"; // Material UI Edit icon
 
-// Type definition for the props used in TodoText
-type TodoTextProps = {
-  completed: boolean;
-};
-
-// Styled component for the container
-const TodoContainer = styled.div`
+// Styled component for the task container
+const TaskContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #ffffff;
+  padding: 10px 15px;
+  background-color: white;
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    flex-direction: row;
-  }
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  width: 350px;
 `;
 
-// Styled component for the button
-const Button = styled.button`
-  margin-left: 10px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
-// Define a styled component for the todo text
-const TodoText = styled.span<{ completed: boolean }>`
+// Styled component for the task text
+const TaskText = styled.span<{ completed: boolean }>`
   flex-grow: 1;
+  margin-left: 10px;
+  font-size: 16px;
   text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
+`;
+
+// Icon container for consistent icon styling
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    cursor: pointer;
+    font-size: 1.5em;
+  }
+`;
+
+// Styled Checkbox
+const Checkbox = styled.input`
+  margin-right: 10px;
 `;
 
 type TodoItemProps = {
   todo: { id: number; text: string; completed: boolean };
   toggleComplete: () => void;
-  onDelete: () => void;
-  onEdit: () => void;
+  deleteTodo: () => void;
+  editTodo: (newText: string) => void;
 };
 
-const Checkbox = styled.input`
-  margin-right: 10px;
-  width: 20px;
-`;
-
-function TodoItem({ todo, toggleComplete, deleteTodo, editTodo }) {
+const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, deleteTodo, editTodo }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(todo.text);
 
@@ -65,46 +56,47 @@ function TodoItem({ todo, toggleComplete, deleteTodo, editTodo }) {
   };
 
   const handleSave = () => {
-    editTodo(editedText);
-    setIsEditing(false);
+    if (editedText.trim()) {
+      editTodo(editedText);
+      setIsEditing(false);
+    }
   };
 
   return (
-    <TodoContainer>
-      <Checkbox
-        type="checkbox"
-        checked={todo.completed}
-        onChange={toggleComplete}
-      />
+    <TaskContainer>
+      <Checkbox type="checkbox" checked={todo.completed} onChange={toggleComplete} />
       {isEditing ? (
         <input
           type="text"
           value={editedText}
           onChange={(e) => setEditedText(e.target.value)}
           onBlur={handleSave}
-          style={{ marginRight: "10px" }}
+          style={{ flexGrow: 1, fontSize: "16px" }}
         />
       ) : (
-        <TodoText completed={todo.completed}>{todo.text}</TodoText>
+        <TaskText completed={todo.completed}>{todo.text}</TaskText>
       )}
-      {isEditing ? (
-        <Button onClick={handleSave} style={{ marginRight: "10px" }}>
-          Save
-        </Button>
-      ) : (
-        <>
+      {!isEditing && (
+        <IconContainer>
           <EditIcon
             onClick={handleEdit}
-            style={{ cursor: "pointer", marginRight: "10px", color: "#007bff" }}
+            style={{
+              color: "#007bff", // Blue color
+              cursor: "pointer",
+              marginRight: "10px",
+            }}
           />
           <DeleteIcon
             onClick={deleteTodo}
-            style={{ cursor: "pointer", color: "red" }}
+            style={{
+              color: "red", // Red color
+              cursor: "pointer",
+            }} 
           />
-        </>
+        </IconContainer>
       )}
-    </TodoContainer>
+    </TaskContainer>
   );
-}
+};
 
 export default TodoItem;

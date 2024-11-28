@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     background-color: #90caf9; /* Deeper blue */
     margin: 0;
+    padding: 0;
   }
 `;
 
@@ -30,13 +31,21 @@ const AppContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   padding: 20px;
+  gap: 40px;
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
   }
 `;
-
+//Styled container for the "New Task" section
+const NewTaskContainer = styled.div`
+  width: 300px;
+`;
+//Styled container for the "Current Tasks"section
+const CurrentTasksContainer = styled.div`
+  flex: 1;
+`;
 const App: React.FC = () => {
   const [todos, setTodos] = React.useState([
     { id: 1, text: 'Sample task 1', completed: false },
