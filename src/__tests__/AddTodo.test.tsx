@@ -1,19 +1,20 @@
-//Test for adding a new item
+// src/__tests__/AddTodo.test.tsx
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import AddTodo from '../components/AddTodo';
 
-test('adding a new item successfully', () => {
-  const addTodo = jest.fn();
-  render(<AddTodo addTodo={addTodo} />);
+describe('AddTodo Component', () => {
+  test('adds a new item successfully', () => {
+    const addTodo = jest.fn();
+    render(<AddTodo addTodo={addTodo} />);
 
-  // Enter new todo text
-  const inputElement = screen.getByPlaceholderText(/Add a new task/i);
-  fireEvent.change(inputElement, { target: { value: 'Learn Jest' } });
+    const input = screen.getByPlaceholderText(/add a new task/i);
+    const addButton = screen.getByText(/add/i);
 
-  // Click add button
-  const addButton = screen.getByRole('button', { name: /Add/i });
-  fireEvent.click(addButton);
+    fireEvent.change(input, { target: { value: 'New Task' } });
+    fireEvent.click(addButton);
 
-  // Assert that addTodo function was called with the correct value
-  expect(addTodo).toHaveBeenCalledWith({ text: 'Learn Jest', completed: false });
+    expect(addTodo).toHaveBeenCalledWith({ text: 'New Task', completed: false });
+    expect(addTodo).toHaveBeenCalledTimes(1);
+  });
 });

@@ -10,7 +10,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     background-color: #90caf9; /* Deeper blue */
     margin: 0;
-    padding: 20px;
   }
 `;
 
@@ -21,7 +20,8 @@ const Header = styled.header`
   padding: 20px;
   font-size: 1.5em;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
+  font-style: italic;
 `;
 
 // Main app container

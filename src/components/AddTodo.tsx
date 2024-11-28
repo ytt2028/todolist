@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 // Styled container for the form
 const FormContainer = styled.div`
   padding: 20px;
@@ -52,34 +52,36 @@ type AddTodoProps = {
   addTodo: (newTodo: Todo) => void;
 };
 
-const AddTodo: React.FC<AddTodoProps> = ({ addTodo  }) => {
-  const [newTodo, setNewTodo] = useState(''); 
-  const [error, setError] = useState('');
-  const handleSubmit = (e) => { 
+const AddTodo: React.FC<AddTodoProps> = ({ addTodo }) => {
+  const [newTodo, setNewTodo] = useState("");
+  const [error, setError] = useState("");
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!newTodo) {
-    setError('Todo name is required');
-    return; 
-  }
-    if (newTodo.length > 10) {
-      setError('Please enter a name Maximum 10 characters');
+      setError("Todo name is required");
       return;
     }
-    addTodo({text: newTodo, completed: false }); 
-    setNewTodo(''); 
-    setError('');
+    if (newTodo.length > 10) {
+      setError("Please enter a name Maximum 10 characters");
+      return;
+    }
+    addTodo({ text: newTodo, completed: false });
+    setNewTodo("");
+    setError("");
   };
 
-  return ( <Form onSubmit={handleSubmit}>
-  <Input
-          type="text"
-          placeholder="Add a new task"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-        />
-  <Button type="submit">Add</Button> 
-  {error && <p style={{ color: 'red' }}>{error}</p>}
-  </Form> );
-  };
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Input
+        type="text"
+        placeholder="Add a new task"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <Button type="submit">Add</Button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+    </Form>
+  );
+};
 
 export default AddTodo;

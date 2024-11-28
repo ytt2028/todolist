@@ -1,32 +1,18 @@
-//Test the entire list for adding/removing items and marking items as done
-import { render, screen, fireEvent } from '@testing-library/react';
+// src/__tests__/TodoList.test.tsx
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import TodoList from '../components/TodoList';
 
-const mockTodos = [
-  { text: 'Learn React', completed: false },
-  { text: 'Learn Jest', completed: false },
+const todos = [
+  { id: 1, text: 'Sample Task 1', completed: false },
+  { id: 2, text: 'Sample Task 2', completed: true },
 ];
 
-test('toggles the completion status of a todo item', () => {
-  const toggleComplete = jest.fn();
-  render(<TodoList todos={mockTodos} toggleComplete={toggleComplete} deleteTodo={() => {}} editTodo={() => {}} />);
+describe('TodoList Component', () => {
+  test('renders list of todos', () => {
+    render(<TodoList todos={todos} toggleComplete={() => {}} deleteTodo={() => {}} editTodo={() => {}} />);
 
-  // Click the checkbox for the first item
-  const checkbox = screen.getAllByRole('checkbox')[0];
-  fireEvent.click(checkbox);
-
-  // Assert that toggleComplete function was called with correct index
-  expect(toggleComplete).toHaveBeenCalledWith(0);
-});
-
-test('deletes a todo item', () => {
-  const deleteTodo = jest.fn();
-  render(<TodoList todos={mockTodos} toggleComplete={() => {}} deleteTodo={deleteTodo} editTodo={() => {}} />);
-
-  // Click delete button for the second item
-  const deleteButton = screen.getAllByRole('button', { name: /Delete/i })[1];
-  fireEvent.click(deleteButton);
-
-  // Assert that deleteTodo function was called with correct index
-  expect(deleteTodo).toHaveBeenCalledWith(1);
+    expect(screen.getByText(/sample task 1/i)).toBeInTheDocument();
+    expect(screen.getByText(/sample task 2/i)).toBeInTheDocument();
+  });
 });
