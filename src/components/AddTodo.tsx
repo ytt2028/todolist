@@ -105,9 +105,10 @@ const AddTodo: React.FC<AddTodoProps> = ({ addTodo }) => {
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
         />
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <ButtonContainer>{error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonContainer>
           <Button type="submit">Add</Button>
+        </ButtonContainer>
         </ButtonContainer>
       </form>
     </FormContainer>

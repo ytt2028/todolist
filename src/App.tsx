@@ -29,7 +29,6 @@ const Header = styled.header`
 const AppContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   padding: 20px;
   gap: 40px;
 

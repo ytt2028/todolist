@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import DeleteIcon from "@mui/icons-material/Delete"; // Material UI Delete icon
-import EditIcon from "@mui/icons-material/Edit"; // Material UI Edit icon
+import DeleteIcon from "@mui/icons-material/DeleteOutline"; // Thin delete icon
+import EditIcon from "@mui/icons-material/EditOutlined"; // Thin edit icon
 
 // Styled component for the task container
 const TaskContainer = styled.div`
@@ -81,17 +81,21 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, deleteTodo, e
           <EditIcon
             onClick={handleEdit}
             style={{
-              color: "#007bff", // Blue color
+              color: "#black", // Blue color
               cursor: "pointer",
               marginRight: "10px",
+              
             }}
           />
+          
           <DeleteIcon
             onClick={deleteTodo}
+
             style={{
               color: "red", // Red color
               cursor: "pointer",
-            }} 
+            }}
+            
           />
         </IconContainer>
       )}
