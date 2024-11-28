@@ -30,11 +30,13 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 20px;
-  gap: 40px;
+  gap: 120px;
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
+    padding: 0px 200px;
   }
 `;
 //Styled container for the "New Task" section
@@ -47,8 +49,8 @@ const CurrentTasksContainer = styled.div`
 `;
 const App: React.FC = () => {
   const [todos, setTodos] = React.useState([
-    { id: 1, text: 'Sample task 1', completed: false },
-    { id: 2, text: 'Sample task 2', completed: false },
+    { id: 1, text: 'task 1', completed: false },
+    { id: 2, text: 'task 2', completed: false },
   ]);
 
   const addTodo = (newTodo) => {

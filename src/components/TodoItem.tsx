@@ -81,7 +81,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, deleteTodo, e
           <EditIcon
             onClick={handleEdit}
             style={{
-              color: "#black", // Blue color
+              color: "grey", 
               cursor: "pointer",
               marginRight: "10px",
               
