@@ -30,7 +30,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 20px;
-  gap: 120px;
+  gap: 260px;
 
   @media (max-width: 768px) {
     flex-direction: column;
