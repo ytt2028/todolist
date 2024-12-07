@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import {ERROR_MESSAGE, MAX_LENGTH_ITEM_NAME} from "./error"
 // Styled container for the form
 const FormContainer = styled.div`
   background-color: white;
@@ -38,6 +39,7 @@ const Button = styled.button`
   color: white;
   font-size: 16px;
   cursor: pointer;
+  height: fit-content;
 
   &:hover {
     background-color: #0097a7;
@@ -76,15 +78,15 @@ type AddTodoProps = {
 
 const AddTodo: React.FC<AddTodoProps> = ({ addTodo }) => {
   const [newTodo, setNewTodo] = useState("");
-  const [error, setError] = useState("Please enter a name. Maximum 10 characters");
+  const [error, setError] = useState(ERROR_MESSAGE);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newTodo) {
       setError("Todo name is required");
       return;
     }
-    if (newTodo.length > 10) {
-      setError("Please enter a name Maximum 10 characters");
+    if (newTodo.length > MAX_LENGTH_ITEM_NAME) {
+      setError(ERROR_MESSAGE);
       return;
     }
     addTodo({ text: newTodo, completed: false });
