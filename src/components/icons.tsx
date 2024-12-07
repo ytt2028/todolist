@@ -1,4 +1,5 @@
 import React from "react";
+import EditOutlined from "@mui/icons-material/EditOutlined";
 import SvgIcon from "@mui/material/SvgIcon";
 
 export const DeleteIcon = ({ onClick }: { onClick: () => void }) => (
@@ -22,21 +23,13 @@ export const DeleteIcon = ({ onClick }: { onClick: () => void }) => (
 );
 
 export const EditIcon = ({ onClick }: { onClick: () => void }) => (
-  <SvgIcon
+    <EditOutlined
     onClick={onClick}
     style={{
+      color: "grey", 
       cursor: "pointer",
-      color: "black",
+      marginRight: "10px",
+      
     }}
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 -960 960 960"
-      width="24px"
-      fill="black"
-    >
-      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z" />
-    </svg>
-  </SvgIcon>
+  />
 );

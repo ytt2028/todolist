@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import EditIcon from "@mui/icons-material/EditOutlined"; // Thin edit icon
 import { SvgIcon } from "@mui/material";
-import { DeleteIcon } from "./icons";
+import { DeleteIcon, EditIcon } from "./icons";
 
 
 // Styled component for the task container
@@ -82,12 +81,6 @@ const TodoItem: React.FC<TodoItemProps> = ({ todo, toggleComplete, deleteTodo, e
         <IconContainer>
           <EditIcon
             onClick={handleEdit}
-            style={{
-              color: "grey", 
-              cursor: "pointer",
-              marginRight: "10px",
-              
-            }}
           />
           
          
